@@ -76,6 +76,20 @@ public class LinkedListImpl {
 		return output; 
 	}
 	
+	NodeLinkedList deleteLast(NodeLinkedList node) {
+		NodeLinkedList output = node, prev = node;
+		
+		if(node == null || node.next == null)
+			return null;
+		
+		while(node.next != null) {
+			prev = node;
+			node = node.next;
+		}
+		prev.next = null;
+		return output;
+	}
+	
 	//Remove element from the given linked list
 	NodeLinkedList delete(NodeLinkedList node, int value)
 	{
@@ -134,6 +148,10 @@ public class LinkedListImpl {
 		System.out.println("*********After insertion at position***********");
 		linkedList.display(postInsertion);
 
+		NodeLinkedList postDeletionTail = linkedList.deleteLast(node1);
+		System.out.println("*********After deletion of tail ***********");
+		linkedList.display(postDeletionTail);	
+		
 		NodeLinkedList postDeletion = linkedList.deleteNodePos(node1, 100, 3);
 		System.out.println("*********After deletion at position***********");
 		linkedList.display(postDeletion);
@@ -142,6 +160,7 @@ public class LinkedListImpl {
 		System.out.println("*********After deletion of nodes greater than 9 ***********");
 		linkedList.display(postDeletionGrt);	
 		
-		
+
+				
 	}
 }
